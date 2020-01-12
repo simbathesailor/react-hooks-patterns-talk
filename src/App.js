@@ -1,8 +1,12 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
 
 function App() {
+  const [value, setValue] = React.useState(0);
+
+  // uwc-debug
+  React.useEffect(() => {}, [value]);
   return (
     <div className="App">
       <header className="App-header">
