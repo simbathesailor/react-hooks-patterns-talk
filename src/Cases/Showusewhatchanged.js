@@ -8,6 +8,14 @@ function Showusewhatchanged() {
   // uwc-debug
   React.useEffect(() => {}, [value1, value2]);
 
+  // uwc-debug
+  const value = React.useMemo(() => {
+    return value1 + value2;
+  }, [value1, value2]);
+
+  // uwc-debug
+  const callback = React.useCallback(() => {}, [value1]);
+
   return (
     <div className="App">
       <header className="App-header">
@@ -19,12 +27,20 @@ function Showusewhatchanged() {
           onClick={() => {
             setValue1(value1 + 1);
           }}
+          style={{
+            color: "#fff",
+            fontSize: "28px"
+          }}
         >
           Change Value 1
         </button>
         <button
           onClick={() => {
             setValue2(value2 + 1);
+          }}
+          style={{
+            color: "#fff",
+            fontSize: "28px"
           }}
         >
           Change Value 2

@@ -45,7 +45,13 @@ function App() {
   return (
     <div className="App">
       {/* <Showusewhatchanged></Showusewhatchanged> */}
-      <Problem1 />
+      {/* <Problem1 /> */}
+      {/* <Problem2 /> */}
+      {/* <Problem3 /> */}
+      {/* <Problem4 /> */}
+      {/* <Problem3 /> */}
+      {/* <Problem6 /> */}
+      <Problem7 />
     </div>
   );
 }

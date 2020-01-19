@@ -1,17 +1,20 @@
 import React from "react";
-function useRefValues(value) {
-  const ref = React.useRef(value);
+function useHotRefs(value, dependencies) {
+  const fnRef = React.useRef(value);
+
+  const dependenciesFinal = (() => {
+    if (Array.isArray(dependencies)) {
+      return [...dependencies];
+    }
+    return [Math.random()];
+  })();
+
   React.useEffect(() => {
-    ref.current = value;
-  });
-  return [ref];
+    fnRef.current = value;
+  }, [...dependenciesFinal]);
+
+  return [fnRef];
 }
-
-// function useCallbackValues(callback, dependencies) {
-//   if (!dependencies) return React.useCallback(callback);
-
-//   return React.useCallback(callback, [...dependencies]);
-// }
 
 function useAcceptOptions(option, arr, countInParent) {
   const { a, b, c, ...otherValues } = option;
@@ -23,7 +26,8 @@ function useAcceptOptions(option, arr, countInParent) {
   // that with the the help of some other hooks. But too much work
 
   const finalCallback = React.useCallback(callback1, [a, b]);
-  const [refArr] = useRefValues(arr);
+
+  const [refArr] = useHotRefs(arr);
 
   // Here refArr is silent dependency
   // uwc-debug
@@ -53,6 +57,7 @@ function App() {
   function aCallback() {
     console.log("hello a callback", obj.a, obj.b);
   }
+
   const arr = ["x", "y", "z"];
 
   useAcceptOptions(obj, arr, countInParent);

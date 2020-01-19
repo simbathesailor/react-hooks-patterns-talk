@@ -1225,10 +1225,10 @@
     babel-types "^6.26.0"
     babylon "^6.18.0"
 
-"@simbathesailor/use-what-changed@^0.1.18":
-  version "0.1.18"
-  resolved "https://registry.yarnpkg.com/@simbathesailor/use-what-changed/-/use-what-changed-0.1.18.tgz#10636661849ee6575001d7f83b2913c7fed8c166"
-  integrity sha512-UQ9sxDgDwPfbTFCTnTsVucpnkrMQHeIJncOsudI1tEcskHK6BskmYq+kwHUJSEqm5rHC0lyb11V6TFcAQ9SAMw==
+"@simbathesailor/use-what-changed@^0.1.19":
+  version "0.1.19"
+  resolved "https://registry.yarnpkg.com/@simbathesailor/use-what-changed/-/use-what-changed-0.1.19.tgz#d4476278ec518ae46c4687e2b2864725b861254c"
+  integrity sha512-YuJizfEkIz/yJVAp58WTKh+EUahI5iu+Sn6gyY3dfN5Zjn6TvyiX3bGh0IPB0Im7a8v20f7cXuXXGbd+73nLjA==
 
 "@svgr/babel-plugin-add-jsx-attribute@^4.2.0":
   version "4.2.0"

@@ -10,6 +10,7 @@ const debouncedmakeApiCall = debounce(makeApiCallRaw, 200, { trailing: true });
 
 function ChildComponent({ value, setValue }) {
   const [count, setCount] = React.useState(0);
+
   return (
     <input
       style={{
