@@ -41,6 +41,7 @@ import Problem6 from "./Cases/Problem6";
  */
 import Problem7 from "./Cases/Problem7";
 
+// {/* <Problem6 /> */}
 function App() {
   return (
     <div className="App">
@@ -49,7 +50,6 @@ function App() {
       {/* <Problem2 /> */}
       {/* <Problem3 /> */}
       {/* <Problem4 /> */}
-      {/* <Problem6 /> */}
       {/* <Problem7 /> */}
     </div>
   );
