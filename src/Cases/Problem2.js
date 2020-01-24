@@ -1,13 +1,11 @@
 import React from "react";
 
 function useFunctionHook(fn, countInParent) {
-  const [count, setCount] = React.useState(0);
-
   //uwc-debug
   React.useEffect(() => {
     // some logic
     fn();
-  }, [count, setCount, fn, countInParent]);
+  }, [fn, countInParent]);
 }
 
 function App() {
