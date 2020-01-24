@@ -48,10 +48,9 @@ function App() {
       {/* <Problem1 /> */}
       {/* <Problem2 /> */}
       {/* <Problem3 /> */}
-      {/* <Problem4 /> */}
-      {/* <Problem3 /> */}
+      <Problem4 />
       {/* <Problem6 /> */}
-      <Problem7 />
+      {/* <Problem7 /> */}
     </div>
   );
 }

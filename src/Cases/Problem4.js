@@ -1,38 +1,17 @@
 import React from "react";
 
-function useHotRefs(value, dependencies) {
+function useHotRefs(value) {
   const fnRef = React.useRef(value);
-
-  const dependenciesFinal = (() => {
-    if (Array.isArray(dependencies)) {
-      return [...dependencies];
-    }
-    return [Math.random()];
-  })();
-
   React.useEffect(() => {
     fnRef.current = value;
-  }, [...dependenciesFinal]);
+  });
 
   return [fnRef];
 }
 
-function useCallbackRef() {
-  const [domElem, setDomElem] = React.useState(null);
-  function setElem(elem) {
-    if (elem) {
-      setDomElem(elem);
-      setDomElem.current = elem;
-      // This is important , because might be some other component which will be needing
-      // access to the elem
-    }
-  }
-  return [domElem, setElem];
-}
 function useFunctionHook(fn, countInParent, ref) {
   const [fnRef] = useHotRefs(fn);
-
-  const [domElem, setElem] = useCallbackRef();
+  // const [domElem, setElem] = useCallbackRef();
 
   //   const [domElem, setDomElem] = React.useState(null);
 
@@ -47,22 +26,22 @@ function useFunctionHook(fn, countInParent, ref) {
   // uwc-debug
   React.useEffect(() => {
     // some trivial update happening to
-    if (domElem) {
+    if (ref.current) {
       if (countInParent % 2 === 0) {
-        domElem.style.backgroundColor = "green";
+        ref.current.style.backgroundColor = "green";
       } else {
-        domElem.style.backgroundColor = "hotpink";
+        ref.current.style.backgroundColor = "hotpink";
       }
 
       fnRef.current();
     }
-  }, [countInParent, fnRef, domElem]);
+  }, [countInParent, fnRef, ref]);
 
-  return [setElem];
+  // return [setElem];
 }
 
 function App() {
-  // const ref = React.useRef(null);
+  const ref = React.useRef(null);
 
   const [countInParent, setCountInParent] = React.useState(0);
 
@@ -70,11 +49,11 @@ function App() {
     console.log("fnCallback ran");
   }
 
-  const [setElem] = useFunctionHook(fnCallback, countInParent);
+  useFunctionHook(fnCallback, countInParent, ref);
 
   return (
     <div
-      ref={setElem}
+      ref={ref}
       style={{
         height: " 100px",
         display: "flex",
@@ -98,19 +77,11 @@ export default App;
 
 // Problem
 
-// function useHotRefs(value, dependencies) {
+// function useHotRefs(value) {
 //   const fnRef = React.useRef(value);
-
-//   const dependenciesFinal = (() => {
-//     if (Array.isArray(dependencies)) {
-//       return [...dependencies];
-//     }
-//     return [Math.random()];
-//   })();
-
 //   React.useEffect(() => {
 //     fnRef.current = value;
-//   }, [...dependenciesFinal]);
+//   });
 
 //   return [fnRef];
 // }
@@ -180,50 +151,34 @@ export default App;
 // }
 
 // Solution
-// function useHotRefs(value, dependencies) {
+// function useHotRefs(value) {
 //   const fnRef = React.useRef(value);
-
-//   const dependenciesFinal = (() => {
-//     if (Array.isArray(dependencies)) {
-//       return [...dependencies];
-//     }
-//     return [Math.random()];
-//   })();
-
 //   React.useEffect(() => {
 //     fnRef.current = value;
-//   }, [...dependenciesFinal]);
+//   });
 
 //   return [fnRef];
 // }
 
-// function useCallbackRef() {
-//   const [domElem, setDomElem] = React.useState(null);
-//   function setElem(elem) {
-//     if (elem) {
-//       setDomElem(elem);
-//       setDomElem.current = elem;
-//       // This is important , because might be some other component which will be needing
-//       // access to the elem
-//     }
-//   }
-//   return [domElem, setElem];
-// }
-// function useFunctionHook(fn, countInParent, ref) {
+// function useFunctionHook(fn, countInParent) {
 //   const [fnRef] = useHotRefs(fn);
-
-//   const [domElem, setElem] = useCallbackRef();
 
 //   //   const [domElem, setDomElem] = React.useState(null);
 
 //   //   function setElem(elem) {
 //   //     if (elem) {
 //   //       setDomElem(elem);
-//   //       setDomElem.current = elem; // This is important , because might be some other component which will be needing
+//   //       setElem.current = elem; // This is important , because might be some other component which will be needing
 //   //       // access to the elem
 //   //     }
 //   //   }
 
+//   const [domElem, setDomElem] = React.useState(null);
+
+//   function setElem(elem) {
+//     setDomElem(elem);
+//     setElem.current = elem;
+//   }
 //   // uwc-debug
 //   React.useEffect(() => {
 //     // some trivial update happening to
@@ -237,8 +192,8 @@ export default App;
 //       fnRef.current();
 //     }
 //   }, [countInParent, fnRef, domElem]);
-
 //   return [setElem];
+//   // return [setElem];
 // }
 
 // function App() {
@@ -250,11 +205,11 @@ export default App;
 //     console.log("fnCallback ran");
 //   }
 
-//   const [setElem] = useFunctionHook(fnCallback, countInParent);
+//   const [ref] = useFunctionHook(fnCallback, countInParent);
 
 //   return (
 //     <div
-//       ref={setElem}
+//       ref={ref}
 //       style={{
 //         height: " 100px",
 //         display: "flex",

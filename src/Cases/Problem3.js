@@ -1,41 +1,17 @@
 import React from "react";
 
-// function useRefValues(value) {
-//   const ref = React.useRef(value);
-//   React.useEffect(() => {
-//     ref.current = value;
-//   });
-//   return [ref];
-// }
-
-/** This is equivalent to useCallback */
-function useHotRefs(value, dependencies) {
-  const fnRef = React.useRef(value);
-
-  const dependenciesFinal = (() => {
-    if (Array.isArray(dependencies)) {
-      return [...dependencies];
-    }
-    return [Math.random()];
-  })();
-  // console.log("TCL: useHotRefs -> dependenciesFinal", dependenciesFinal);
-
-  React.useEffect(() => {
-    fnRef.current = value;
-  }, [...dependenciesFinal]);
-
-  return [fnRef];
-}
-
 function useFunctionHook(fn, countInParent) {
-  const [fnRef] = useHotRefs(fn);
+  //   const fnRef = React.useRef(null);
+
+  //   React.useEffect(() => {
+  //     fnRef.current = fn;
+  //   });
+  // const [fnRef] = useRefValues(fn);
 
   // uwc-debug
   React.useEffect(() => {
-    if (fnRef.current) {
-      fnRef.current();
-    }
-  }, [fnRef, countInParent]);
+    fn();
+  }, [fn, countInParent]);
 }
 
 function App() {
@@ -104,33 +80,29 @@ export default App;
 
 /// Solution
 
-/** This is equivalent to useCallback */
-// function useHotRefs(value, dependencies) {
+// function useHotRefs(value) {
 //   const fnRef = React.useRef(value);
-
-//   const dependenciesFinal = (() => {
-//     if (Array.isArray(dependencies)) {
-//       return [...dependencies];
-//     }
-//     return [Math.random()];
-//   })();
-//   console.log("TCL: useHotRefs -> dependenciesFinal", dependenciesFinal);
-
 //   React.useEffect(() => {
 //     fnRef.current = value;
-//   }, [...dependenciesFinal]);
-
+//   });
 //   return [fnRef];
 // }
-
+// /** This is equivalent to useCallback but is better at times*/
 // function useFunctionHook(fn, countInParent) {
-//   const [fnRef] = useHotRefs(fn);
+//   //   const fnRef = React.useRef(null);
 
+//   //   React.useEffect(() => {
+//   //     fnRef.current = fn;
+//   //   });
+//   // const [fnRef] = useRefValues(fn);
+//   // const fnRef = React.useRef(fn);
+//   // React.useEffect(() => {
+//   //   fnRef.current = fn;
+//   // });
+//   const [fnRef] = useHotRefs(fn);
 //   // uwc-debug
 //   React.useEffect(() => {
-//     if (fnRef.current) {
-//       fnRef.current();
-//     }
+//     fnRef.current();
 //   }, [fnRef, countInParent]);
 // }
 

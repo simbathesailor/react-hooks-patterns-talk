@@ -1,17 +1,10 @@
 import React from "react";
-function useHotRefs(value, dependencies) {
+// uwc-debug-below
+function useHotRefs(value) {
   const fnRef = React.useRef(value);
-
-  const dependenciesFinal = (() => {
-    if (Array.isArray(dependencies)) {
-      return [...dependencies];
-    }
-    return [Math.random()];
-  })();
-
   React.useEffect(() => {
     fnRef.current = value;
-  }, [...dependenciesFinal]);
+  });
 
   return [fnRef];
 }
@@ -21,21 +14,16 @@ function useAcceptOptions(option, arr, countInParent) {
 
   const { callback1, array1 } = otherValues;
 
-  // usecallback takes second argument which make it more usable in most of the cases. The cases where we want
-  // callbacks to change, but not every time. There is no such thing with useRef. Ofcourse we can simulate
-  // that with the the help of some other hooks. But too much work
-
   const finalCallback = React.useCallback(callback1, [a, b]);
 
   const [refArr] = useHotRefs(arr);
 
   // Here refArr is silent dependency
-  // uwc-debug
+
   React.useEffect(() => {
     console.log("some logic based on final callback");
   }, [a, b, c, finalCallback, refArr]);
 
-  // uwc-debug
   React.useEffect(
     () => {
       console.log("countInParent", countInParent);

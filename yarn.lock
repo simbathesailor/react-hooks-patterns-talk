@@ -1212,10 +1212,10 @@
   resolved "https://registry.yarnpkg.com/@sheerun/mutationobserver-shim/-/mutationobserver-shim-0.3.2.tgz#8013f2af54a2b7d735f71560ff360d3a8176a87b"
   integrity sha512-vTCdPp/T/Q3oSqwHmZ5Kpa9oI7iLtGl3RQaA/NyLHikvcrPxACkkKVr/XzkSPJWXHRhKGzVvb0urJsbMlRxi1Q==
 
-"@simbathesailor/babel-plugin-use-what-changed@^0.1.13":
-  version "0.1.13"
-  resolved "https://registry.yarnpkg.com/@simbathesailor/babel-plugin-use-what-changed/-/babel-plugin-use-what-changed-0.1.13.tgz#a13f81ea324e675b937c5562f354119da2b566d9"
-  integrity sha512-Ro7HKdbIJtuuFn7/+QZQWDz2HU+lcgGe3SJOcx2rFK6WI7um+YgHYUMPxrHRbkrp72sIW6DDqm170WOTzQ3iuQ==
+"@simbathesailor/babel-plugin-use-what-changed@^0.1.14":
+  version "0.1.14"
+  resolved "https://registry.yarnpkg.com/@simbathesailor/babel-plugin-use-what-changed/-/babel-plugin-use-what-changed-0.1.14.tgz#a10bf478ee87b0bf6202f1e4d754918630674aa3"
+  integrity sha512-UkHl60dI1mgZYNardQcJ4sxjsjTAfNQnZ6I9HLHPP7C+V2zwTZDegA605gLFF/jhOPqJtZC92FHr6f4yIjrTwQ==
   dependencies:
     "@babel/generator" "^7.7.7"
     "@babel/types" "^7.7.4"
@@ -1225,10 +1225,10 @@
     babel-types "^6.26.0"
     babylon "^6.18.0"
 
-"@simbathesailor/use-what-changed@^0.1.19":
-  version "0.1.19"
-  resolved "https://registry.yarnpkg.com/@simbathesailor/use-what-changed/-/use-what-changed-0.1.19.tgz#d4476278ec518ae46c4687e2b2864725b861254c"
-  integrity sha512-YuJizfEkIz/yJVAp58WTKh+EUahI5iu+Sn6gyY3dfN5Zjn6TvyiX3bGh0IPB0Im7a8v20f7cXuXXGbd+73nLjA==
+"@simbathesailor/use-what-changed@^0.1.21":
+  version "0.1.21"
+  resolved "https://registry.yarnpkg.com/@simbathesailor/use-what-changed/-/use-what-changed-0.1.21.tgz#d7491262ee75a8d72610c7000e27f51b8a64f602"
+  integrity sha512-qKICSqI9KcVfjezIuFpj6EJdNtof5RgIqjv8yALqo07TzswXfGQM6iiJGymoopVcOPJDN8EXOuKKgBsVO+d3sw==
 
 "@svgr/babel-plugin-add-jsx-attribute@^4.2.0":
   version "4.2.0"

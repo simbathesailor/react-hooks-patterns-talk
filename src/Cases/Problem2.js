@@ -3,21 +3,16 @@ import React from "react";
 function useFunctionHook(fn, countInParent) {
   const [count, setCount] = React.useState(0);
 
-  const fnCallback = React.useCallback(fn, [countInParent]);
-
   //uwc-debug
   React.useEffect(() => {
     // some logic
-    fnCallback();
-  }, [count, setCount, fnCallback, countInParent]);
+    fn();
+  }, [count, setCount, fn, countInParent]);
 }
 
 function App() {
   const [countInParent, setCountInParent] = React.useState(0);
 
-  // const fn = React.useCallback(() => {
-  //   console.log("countInParent", countInParent);
-  // }, []);
   function fn() {
     // some logic
     console.log("countInParent", countInParent);
@@ -37,7 +32,6 @@ function App() {
     </div>
   );
 }
-
 export default App;
 
 // Think of showing diagram here if possible.
@@ -79,23 +73,17 @@ export default App;
 // Solution
 
 // function useFunctionHook(fn, countInParent) {
-//   const [count, setCount] = React.useState(0);
-
 //   const fnCallback = React.useCallback(fn, [countInParent]);
-
 //   //uwc-debug
 //   React.useEffect(() => {
 //     // some logic
 //     fnCallback();
-//   }, [count, setCount, fnCallback, countInParent]);
+//   }, [fnCallback, countInParent]);
 // }
 
 // function App() {
 //   const [countInParent, setCountInParent] = React.useState(0);
 
-//   // const fn = React.useCallback(() => {
-//   //   console.log("countInParent", countInParent);
-//   // }, []);
 //   function fn() {
 //     // some logic
 //     console.log("countInParent", countInParent);

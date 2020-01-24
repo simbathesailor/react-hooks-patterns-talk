@@ -4,8 +4,8 @@
   "private": true,
   "dependencies": {
     "@babel/core": "7.7.4",
-    "@simbathesailor/babel-plugin-use-what-changed": "^0.1.13",
-    "@simbathesailor/use-what-changed": "^0.1.19",
+    "@simbathesailor/babel-plugin-use-what-changed": "^0.1.14",
+    "@simbathesailor/use-what-changed": "^0.1.21",
     "@svgr/webpack": "4.3.3",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",

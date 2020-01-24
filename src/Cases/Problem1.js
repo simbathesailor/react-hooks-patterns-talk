@@ -1,10 +1,10 @@
 import React from "react";
 
-function useFunctionHook(fn) {
-  const [count, setCount] = React.useState(0);
-
+function useFunctionHook(fn, countInParent) {
   // uwc-debug
-  React.useEffect(() => {}, [count, setCount, fn]);
+  React.useEffect(() => {
+    fn();
+  }, [fn, countInParent]);
 }
 
 function Problem1() {
@@ -12,8 +12,9 @@ function Problem1() {
 
   function fn() {
     // some logic
+    console.log("fn runs");
   }
-  useFunctionHook(fn);
+  useFunctionHook(fn, countInParent);
 
   return (
     <div>
@@ -31,11 +32,11 @@ export default Problem1;
 
 // Problem
 
-// function useFunctionHook(fn) {
-//   const [count, setCount] = React.useState(0);
-
+// function useFunctionHook(fn, countInParent) {
 //   // uwc-debug
-//   React.useEffect(() => {}, [count, setCount, fn]);
+//   React.useEffect(() => {
+//     fn();
+//   }, [fn, countInParent]);
 // }
 
 // function Problem1() {
@@ -43,8 +44,9 @@ export default Problem1;
 
 //   function fn() {
 //     // some logic
+//     console.log("fn runs");
 //   }
-//   useFunctionHook(fn);
+//   useFunctionHook(fn, countInParent);
 
 //   return (
 //     <div>
@@ -61,20 +63,22 @@ export default Problem1;
 
 // Solution
 
-// function useFunctionHook(fn) {
-//   const [count, setCount] = React.useState(0);
-
+// function useFunctionHook(fn, countInParent) {
 //   // uwc-debug
-//   React.useEffect(() => {}, [count, setCount, fn]);
+//   React.useEffect(() => {
+//     fn();
+//   }, [fn, countInParent]);
 // }
 
 // function fn() {
 //   // some logic
+//   console.log("fn runs");
 // }
+
 // function Problem1() {
 //   const [countInParent, setCountInParent] = React.useState(0);
 
-//   useFunctionHook(fn);
+//   useFunctionHook(fn, countInParent);
 
 //   return (
 //     <div>
