@@ -32,14 +32,9 @@ import Problem3 from "./Cases/Problem3";
 import Problem4 from "./Cases/Problem4";
 
 /**
- * Problem 6
- */
-import Problem6 from "./Cases/Problem6";
-
-/**
  * Debounced effect
  */
-import Problem7 from "./Cases/Problem7";
+import Problem6 from "./Cases/Problem6";
 
 // {/* <Problem6 /> */}
 function App() {
@@ -50,7 +45,7 @@ function App() {
       {/* <Problem2 /> */}
       {/* <Problem3 /> */}
       {/* <Problem4 /> */}
-      {/* <Problem7 /> */}
+      {/* <Problem6 /> */}
     </div>
   );
 }

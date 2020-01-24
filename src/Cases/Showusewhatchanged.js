@@ -20,16 +20,14 @@ function Showusewhatchanged() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
         <button
           onClick={() => {
             setValue1(value1 + 1);
           }}
           style={{
             color: "#fff",
-            fontSize: "28px"
+            fontSize: "28px",
+            background: "hotpink"
           }}
         >
           Change Value 1
@@ -40,19 +38,12 @@ function Showusewhatchanged() {
           }}
           style={{
             color: "#fff",
-            fontSize: "28px"
+            fontSize: "28px",
+            background: "hotpink"
           }}
         >
           Change Value 2
         </button>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
     </div>
   );

@@ -1,64 +1,39 @@
 import React from "react";
-// uwc-debug-below
-function useHotRefs(value) {
-  const fnRef = React.useRef(value);
-  React.useEffect(() => {
-    fnRef.current = value;
-  });
+import debounce from "lodash/debounce";
 
-  return [fnRef];
+function makeApiCallRaw(value, setCount) {
+  console.log("make api call with value", value);
+  setCount(c => c + 1);
 }
 
-function useAcceptOptions(option, arr, countInParent) {
-  const { a, b, c, ...otherValues } = option;
+const debouncedmakeApiCall = debounce(makeApiCallRaw, 200, { trailing: true });
 
-  const { callback1, array1 } = otherValues;
+function ChildComponent({ value, setValue }) {
+  const [count, setCount] = React.useState(0);
 
-  const finalCallback = React.useCallback(callback1, [a, b]);
-
-  const [refArr] = useHotRefs(arr);
-
-  // Here refArr is silent dependency
-
-  React.useEffect(() => {
-    console.log("some logic based on final callback");
-  }, [a, b, c, finalCallback, refArr]);
-
-  React.useEffect(
-    () => {
-      console.log("countInParent", countInParent);
-    },
-    [countInParent]
-    // sxassd
+  return (
+    <input
+      style={{
+        height: "100px",
+        border: "3px solid",
+        width: "400px",
+        fontSize: "48px",
+        marginTop: "50px"
+      }}
+      value={value}
+      onChange={e => {
+        setValue(e.target.value); // Has to be non debounced
+        debouncedmakeApiCall(e.target.value, setCount); // has to be debounced
+      }}
+    />
   );
 }
 
 function App() {
-  // const [ref, setRef] = React.useRef(null) remove this
-  const [countInParent, setCountInParent] = React.useState(0);
-  const obj = {
-    a: 1,
-    b: 2,
-    c: 3,
-    callback1: aCallback
-  };
-  function aCallback() {
-    console.log("hello a callback", obj.a, obj.b);
-  }
-
-  const arr = ["x", "y", "z"];
-
-  useAcceptOptions(obj, arr, countInParent);
-
+  const [value, setValue] = React.useState("");
   return (
     <div>
-      <button
-        style={{ marginTop: "50px" }}
-        onClick={() => setCountInParent(countInParent + 1)}
-      >
-        <h1>{countInParent}</h1>
-        Change Count
-      </button>
+      <ChildComponent value={value} setValue={setValue} />
     </div>
   );
 }
