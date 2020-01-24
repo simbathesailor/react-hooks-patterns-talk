@@ -44,11 +44,11 @@ import Problem7 from "./Cases/Problem7";
 function App() {
   return (
     <div className="App">
-      {/* <Showusewhatchanged></Showusewhatchanged> */}
+      <Showusewhatchanged></Showusewhatchanged>
       {/* <Problem1 /> */}
       {/* <Problem2 /> */}
       {/* <Problem3 /> */}
-      <Problem4 />
+      {/* <Problem4 /> */}
       {/* <Problem6 /> */}
       {/* <Problem7 /> */}
     </div>
